@@ -12,6 +12,7 @@ ktorSerializationKotlinxJson = "3.0.0"
 lifecycleRuntimeKtx = "2.8.6"
 activityCompose = "1.9.2"
 composeBom = "2024.04.01"
+koin = "3.4.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -32,6 +33,9 @@ ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "k
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktorClientContentNegotiation" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktorClientCore" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktorSerializationKotlinxJson" }
+koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin"}
+koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin"}
+koin-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

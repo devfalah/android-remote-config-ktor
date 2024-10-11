@@ -1,4 +1,4 @@
-package com.devfalah.remoteConfig
+package com.devfalah.remoteConfig.ui.screens.remoteConfig
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -8,26 +8,19 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.devfalah.remoteConfig.data.RemoteConfig
-import com.devfalah.remoteConfig.data.RemoteConfigManager
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun RemoteConfigScreen(remoteConfigManager: RemoteConfigManager) {
-    var config by remember { mutableStateOf<RemoteConfig?>(null) }
-    var isLoading by remember { mutableStateOf(true) }
-
-    LaunchedEffect(Unit) {
-        config = remoteConfigManager.fetchConfig()
-        isLoading = false
-    }
+fun RemoteConfigScreen(
+    viewModel: RemoteConfigViewModel = koinViewModel()
+) {
+    val isLoading by viewModel.isLoading.collectAsState()
+    val config by viewModel.config.collectAsState()
 
     Scaffold { innerPadding ->
         Column(
